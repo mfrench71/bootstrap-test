@@ -8,5 +8,5 @@ var person = {
 };
 
 person.displayName(); // Prints: Peter
-document.write("<br>");
+document.write("<br />");
 person["displayName"](); // Prints: Peter
