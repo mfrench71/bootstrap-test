@@ -8,7 +8,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: "assets/js/src/*.js",
-        tasks: ["uglify"],
+        tasks: ["babel", "uglify"],
       },
     },
     sass: {
@@ -38,6 +38,23 @@ module.exports = function (grunt) {
         ],
       },
     },
+    babel: {
+      options: {
+        sourceMap: false,
+        presets: ["@babel/preset-env"],
+      },
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: "assets/js/src",
+            src: ["*.js", "!*-es5.js"],
+            dest: "assets/js/src",
+            ext: "-es5.js",
+          },
+        ],
+      },
+    },
     uglify: {
       options: {
         mangle: {
@@ -49,7 +66,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: "assets/js/src",
-            src: ["*.js"],
+            src: ["*-es5.js", "!*-es5.min.js"],
             dest: "assets/js/dist",
             ext: ".min.js",
           },
@@ -81,7 +98,8 @@ module.exports = function (grunt) {
   });
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-sass");
+  grunt.loadNpmTasks("grunt-babel");
   grunt.loadNpmTasks("grunt-contrib-uglify");
   // Default tasks
-  grunt.registerTask("default", ["sass", "uglify"]);
+  grunt.registerTask("default", ["sass", "babel", "uglify"]);
 };

@@ -1,4 +1,4 @@
-var person = {
+let person = {
     name: "Peter",
     age: 28,
     gender: "Male",
@@ -6,6 +6,9 @@ var person = {
         document.write(this.name);
     }
 };
+
+const test = true;
+console.log(test);
 
 person.displayName(); // Prints: Peter
 document.write("<br />");
