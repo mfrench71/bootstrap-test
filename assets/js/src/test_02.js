@@ -7,5 +7,5 @@ function getGrades() {
 console.log(getGrades(90, 100, 75, 40, 89, 95));
 
 let newOne = () => {
- console.log("Hello World..!");
+ console.log("Hello World.....!");
 }

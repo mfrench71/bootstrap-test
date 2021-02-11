@@ -1,6 +1,14 @@
 module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
+    wait: {
+      options: {
+        delay: 1000
+      },
+      pause: {
+        //
+      },
+    },
     watch: {
       sass: {
         files: "assets/scss/**/*.scss",
@@ -8,7 +16,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: "assets/js/src/*.js",
-        tasks: ["babel", "uglify"],
+        tasks: ["babel", "wait", "uglify", "clean"],
       },
     },
     sass: {
@@ -39,18 +47,18 @@ module.exports = function (grunt) {
       },
     },
     babel: {
-      options: {
+      options: {  
         sourceMap: false,
-        presets: ["@babel/preset-env"],
+        presets: ["@babel/preset-env", "minify"],
       },
       dist: {
         files: [
           {
             expand: true,
             cwd: "assets/js/src",
-            src: ["*.js", "!*-es5.js"],
+            src: ["*.js", "!*.es5.js"],
             dest: "assets/js/src",
-            ext: "-es5.js",
+            ext: ".es5.js",
           },
         ],
       },
@@ -61,12 +69,12 @@ module.exports = function (grunt) {
           toplevel: true,
         },
       },
-      base: {
+      es5: {
         files: [
           {
             expand: true,
             cwd: "assets/js/src",
-            src: ["*-es5.js", "!*-es5.min.js"],
+            src: ["*.es5.js"],
             dest: "assets/js/dist",
             ext: ".min.js",
           },
@@ -95,11 +103,16 @@ module.exports = function (grunt) {
         },
       },
     },
+    clean: {
+      es5: ['assets/js/src/**/*.es5.js']
+    }
   });
+  grunt.loadNpmTasks("grunt-wait");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-sass");
   grunt.loadNpmTasks("grunt-babel");
   grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks('grunt-contrib-clean');
   // Default tasks
-  grunt.registerTask("default", ["sass", "babel", "uglify"]);
+  grunt.registerTask("default", ["sass", "babel", "wait", "uglify", "clean"]);
 };
