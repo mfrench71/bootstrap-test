@@ -6,6 +6,7 @@ function getGrades() {
 // Let's output this!
 console.log(getGrades(90, 100, 75, 40, 89, 95));
 
+// ES6
 let newOne = () => {
  console.log("Hello World.....!");
 }

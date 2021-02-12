@@ -1,3 +1,4 @@
+// ES6
 let person = {
     name: "Peter",
     age: 28,

@@ -49,6 +49,7 @@ module.exports = function (grunt) {
     babel: {
       options: {  
         sourceMap: false,
+        // Transpile and Minify
         presets: ["@babel/preset-env", "minify"],
       },
       dist: {
@@ -105,6 +106,7 @@ module.exports = function (grunt) {
       },
     },
     clean: {
+      // Cleanup temporary .es5.js files
       es5: ['assets/js/src/**/*.es5.js']
     }
   });
