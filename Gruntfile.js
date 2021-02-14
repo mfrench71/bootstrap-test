@@ -15,8 +15,8 @@ module.exports = function (grunt) {
         tasks: ["sass"],
       },
       js: {
-        files: "assets/js/src/*.js",
-        tasks: ["babel", "wait", "uglify", "clean"],
+        files: ["assets/js/src/*.js", "!assets/js/src/*.es5.js"],
+        tasks: ["babel", "uglify", "clean"],
       },
     },
     sass: {
@@ -117,5 +117,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks('grunt-contrib-clean');
   // Default tasks
-  grunt.registerTask("default", ["sass", "babel", "wait", "uglify", "clean"]);
+  grunt.registerTask("default", ["sass", "babel", "uglify", "clean"]);
 };
