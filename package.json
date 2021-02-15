@@ -16,8 +16,7 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-sass": "^2.0.0",
     "grunt-contrib-uglify": "^5.0.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-wait": "^0.3.0"
+    "grunt-contrib-watch": "^1.1.0"
   },
   "dependencies": {
     "bootstrap": "^5.0.0-beta1",

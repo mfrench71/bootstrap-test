@@ -1,14 +1,6 @@
 module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
-    wait: {
-      options: {
-        delay: 1000
-      },
-      pause: {
-        //
-      },
-    },
     watch: {
       sass: {
         files: "assets/scss/**/*.scss",
@@ -110,7 +102,6 @@ module.exports = function (grunt) {
       es5: ['assets/js/src/**/*.es5.js']
     }
   });
-  grunt.loadNpmTasks("grunt-wait");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-sass");
   grunt.loadNpmTasks("grunt-babel");
